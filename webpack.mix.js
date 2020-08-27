@@ -13,3 +13,14 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.styles([
+    'node_modules/gentelella/build/css/custom.min.css'
+], 'public/assets/gentelella/css/gentelella.css');
+
+mix.scripts([
+    'node_modules/gentelella/build/js/custom.min.js'
+], 'public/assets/gentelella/js/gentelella.js');
+
+mix.copy('node_modules/gentelella/vendors/', 'public/assets/gentelella/vendors');
+mix.copy('node_modules/gentelella/production/images/', 'public/assets/gentelella/images');
