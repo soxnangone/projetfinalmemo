@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ImpressionController;
+use App\Http\Controllers\MariageController;
+use App\Models\Localite;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +21,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $title = "Login";
     return view('login', ['title' => $title]);
+})->name('accueil');
+
+
+Route::get('new_login', function () {
+    $title = "New_Login";
+    return view('new_login', ['title' => $title]);
 });
 
-Route::get('/login', function () {
-    $title = "Login";
-    return view('login', ['title' => $title]);
-});
 
-Route::get('dashboard', function () {
-    $title = "Dashboard";
-    return view('dashboard', ['title' => $title]);
-});
+Route::get('dashboard', 'homecontroller@index')->name('dashboard');
 
 Route::get('dashboard/v2', function () {
     $title = "Dashboard v2";
@@ -41,9 +43,25 @@ Route::get('dashboard/v3', function () {
 });
 
 // FORM
-Route::get('form', function () {
-    $title = "Form";
-    return view('form.index', ['title' => $title]);
+Route::get('declarations/mariage', function () {
+    $title = "mariage";
+    return view('declarations.mariage', ['title' => $title]);
+});
+Route::get('formulaire/epoux', function () {
+    $title = "epoux";
+    return view('formulaire.epoux', ['title' => $title]);
+});
+Route::get('formulaire/epouse', function () {
+    $title = "epouse";
+    return view('formulaire.epouse', ['title' => $title]);
+});
+Route::get('formulaire/officier', function () {
+    $title = "officier";
+    return view('formulaire.officier', ['title' => $title]);
+});
+Route::get('formulaire/temoin', function () {
+    $title = "temoin";
+    return view('formulaire.temoin', ['title' => $title]);
 });
 
 Route::get('form/advanced', function () {
@@ -189,3 +207,50 @@ Route::get('pages/pricing', function () {
     $title = "Pricing Tables";
     return view('pages.pricing_tables', ['title' => $title]);
 });
+//utilisateur
+Route::post('/register', 'UtilisateurController@store');
+Route::post('/login', 'UtilisateurController@connexion');
+Route::get('/new_login/{id}', 'UtilisateurController@edite');
+Route::post('/update_user', 'UtilisateurController@update_profile');
+Route::post('/update_password', 'UtilisateurController@update_password');
+Route::post('/logout', 'UtilisateurController@logout')->name('logout');
+Route::resource('Listes_Utilisateurs', 'UtilisateurController');
+
+Route::post('/ajout', 'MariageController@ajout');
+Route::post('/ajoutEpoux', 'EpouxController@ajout');
+Route::post('/ajoutEpouse', 'EpouseController@ajout');
+Route::post('/ajoutTemoin', 'TemoinController@ajout');
+Route::post('/ajoutOfficier', 'OfficierController@ajout');
+
+Route::get('declarations/Mariage', 'MariageController@index1')->name('Mariage_valide');
+Route::get('/editnaisse/{id}', 'MariageController@edit');
+Route::get('/editnaiss/{id}', 'MariageController@editnaiss');
+Route::resource('validations_mariage', 'MariageController');
+
+Route::get('formulaire/epoux', 'EpouxController@index1')->name('epoux_valide');
+Route::get('/editEpoux/{id}', 'EpouxController@editEpoux');
+Route::resource('validations_epoux', 'EpouxController');
+
+Route::get('formulaire/epouse', 'EpouseController@index1')->name('epouse_valide');
+Route::get('/editEpouse/{id}', 'EpouseController@editEpouse');
+Route::resource('validations_epouse', 'EpouseController');
+
+Route::get('formulaire/temoin', 'TemoinController@index1')->name('temoin_valide');
+Route::get('/editTemoin/{id}', 'TemoinController@editTemoin');
+Route::resource('validations_temoin', 'TemoinController');
+
+Route::get('formulaire/officier', 'OfficierController@index1')->name('officier_valide');
+Route::get('/editOfficier/{id}', 'OfficierController@editOfficier');
+Route::resource('validations_officier', 'OfficierController');
+
+Route::get('/statu/{id}', 'UtilisateurController@upStat')->name('upda');
+
+Route::resource('impression_extrait_mariage', 'ImpressionController');
+Route::get('declarations/volet/{id}', [MariageController::class, 'getPdf']);
+Route::get('impressions/{id}', [ImpressionController::class, 'getPdf']);
+Route::get('declarations/mariage/{nin_epoux}', [MariageController::class, 'MariageByNin_epoux']);
+Route::get('declarations/mariages/{nin_epouse}', [MariageController::class, 'MariageByNin_epouse']);
+Route::get('register/{nin}', 'UtilisateurController@ChearchByNin_user');
+Route::get('edit/{id}', 'UtilisateurController@edit');
+
+

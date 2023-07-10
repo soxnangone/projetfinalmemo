@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FavIcon -->
     <link rel="icon" href="{{ asset("favicon.ico") }}" type="image/ico" />
-    <title>{{ $title }}</title>
-    
+    <title></title>
+
     @include('layouts.head')
 
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md navbar-light" style="background-color: #00008B;">
     <div class="container body">
       <div class="main_container">
         @include('layouts.sidebar')
@@ -30,7 +30,7 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        @include('layouts.footer')
+
         <!-- /footer content -->
       </div>
     </div>

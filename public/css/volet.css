@@ -1,0 +1,26 @@
+label{
+    color: #0b97c4;
+}
+h3{
+    color: #0c5460;
+}
+thead, tfoot {
+
+    border:1px solid black;
+}
+caption {
+    font-family:arial;
+    font-size: 20px;
+}
+hr{
+    width: 100px;
+}
+.a{
+    border:1px solid black;
+}
+table {
+    border:none;
+    border-collapse:collapse;
+    width:100%;
+    margin:auto;
+}

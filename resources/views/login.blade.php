@@ -1,96 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>CONNEXION</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendors/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+<script src="{{ url('js/sweetalert1.js') }}"></script>
+<script src="{{ url('js/sweetalert2.js') }}"></script>
+<script>
 
-    <title>{{ $title }}</title>
+</script>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url(/images/br2.jpg);">
+					<span class="login100-form-title-1">
+						CONNEXION
+					</span>
+				</div>
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger ">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+				<form class="login100-form validate-form"  method="POST" action="login">
+				{{ csrf_field()}}
 
-    @include('layouts.head')
-    <!-- Animate.css -->
-    {{-- <link href="{{ base_url('assets/gentelella/vendors/animate.css/animate.min.css') }}" rel="stylesheet"> --}}
+					<div class="wrap-input100 validate-input m-b-26" data-validate="Nom d'Utilisateur Obligatoire">
+						<span class="label-input100">Nom d'Utilisateur</span>
+						<input class="input100" type="text" name="username" placeholder="Saisir le nom d'Utilisateur">
 
-  </head>
+					</div>
 
-  <body class="login">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
 
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1>Login Form</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-              <a class="btn btn-default submit" href="{{ url('/dashboard') }}">Log in</a>
-                <a class="reset_pass" href="#">Lost your password?</a>
-              </div>
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "Mot de passe Obligatoire">
+						<span class="label-input100">Mot de Passe</span>
+						<input class="input100" type="password" name="password" placeholder="Saisir le mot de passe">
 
-              <div class="clearfix"></div>
+					</div>
 
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
 
-                <div class="clearfix"></div>
-                <br />
+					<div class="flex-sb-m w-full p-b-30">
+						<div class="contact100-form-checkbox">
 
-                <div>
-                  <h2><i class="fa fa-paw"></i> Gentelella Alela! with <i class="fa fa-cloud"></i> Awan</h2>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
+						</div>
 
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="">Submit</a>
-              </div>
+						<div>
+							<a href="#" class="txt1">
+								Mot de passe Oublié?
+							</a>
+						</div>
+					</div>
 
-              <div class="clearfix"></div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"   >
+							CONNEXION
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
+<!--===============================================================================================-->
+	<script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendors/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendors/bootstrap/js/popper.js"></script>
+	<script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendors/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendors/daterangepicker/moment.min.js"></script>
+	<script src="/vendors/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendors/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/main.js"></script>
 
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                    <h2><i class="fa fa-paw"></i> Gentelella Alela! with <i class="fa fa-cloud"></i> Awan</h2>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
-    </div>
-  </body>
+</body>
 </html>

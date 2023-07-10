@@ -1,7 +1,7 @@
 @section('head')
     <!-- iCheck -->
     <link href="{{ url('assets/gentelella/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('assets/gentelella/css/gentelella.css') }}" rel="stylesheet">
 @endsection
 
 @extends('layouts.master', ['title' => $title])

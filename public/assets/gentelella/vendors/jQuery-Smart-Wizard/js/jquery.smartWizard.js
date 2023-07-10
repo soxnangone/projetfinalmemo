@@ -77,6 +77,7 @@ function SmartWizard(target, options) {
                     var frm = $this.target.parents('form');
                     if(frm && frm.length){
                         frm.submit();
+
                     }
                 }
             }
@@ -113,7 +114,7 @@ function SmartWizard(target, options) {
 
     var _prepareSteps = function($this) {
         if(! $this.options.enableAllSteps){
-            $($this.steps, $this.target).removeClass("selected").removeClass("done").addClass("disabled");
+            $($this.steps, $this.target).removeClass("selected").removeClass("done").addClass("done");
             $($this.steps, $this.target).attr("isDone",0);
         }else{
             $($this.steps, $this.target).removeClass("selected").removeClass("disabled").addClass("done");
@@ -437,9 +438,9 @@ $.fn.smartWizard.defaults = {
     enableFinishButton: false, // make finish button enabled always
 	hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
     errorSteps:[],    // Array Steps with errors
-    labelNext:'Next',
-    labelPrevious:'Previous',
-    labelFinish:'Finish',
+    labelNext:'Suivant',
+    labelPrevious:'Précédent',
+    labelFinish:'Enregistrer',
     noForwardJumping: false,
     onLeaveStep: null, // triggers when leaving a step
     onShowStep: null,  // triggers when showing a step
