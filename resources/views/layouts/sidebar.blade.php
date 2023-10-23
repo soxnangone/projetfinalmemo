@@ -26,14 +26,13 @@
                     @if(Auth::user()->poste=="agent"|| Auth::user()->poste=="OFFICIER")
                         <li><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i> ACCUEIL</a>
                         </li>
-                        <li><a ><i class="fa fa-birthday-cake"></i> NAISSANCE <span class="fa fa-chevron-down"></span> </a>
+                        <li><a ><i class="fa fa-birthday-cake"></i> Mariage <span class="fa fa-chevron-down"></span> </a>
                             <ul class="nav child_menu">
-                                <li><a href="{{ url('declarations/naissance') }}">Declaration</a></li>
-                                <li><a href="{{route('impression_extrait_naissance.index')}}" >Extrait</a></li>
+                                <li><a href="{{ url('declarations/Mariage') }}">Declaration</a></li>
+                                <li><a href="{{route('impression_extrait_mariage.index')}}" >Extrait</a></li>
                                 <li><a >Copie Litterale</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url('declarations/mariage') }}"><i class="fa fa-diamond"></i> MARIAGES </a>
                         </li>
                         <li><a><i class="fa fa-remove"></i> DECES </a>
                         </li>
@@ -41,8 +40,7 @@
                     @if(Auth::user()->poste=="OFFICIER")
                         <li><a><i class="fa fa-check"></i> VALIDATIONS <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="{{ route('validations_naissance.index') }}">Naissances</a></li>
-                                <li><a href="{{ url('chart/v2') }}">Mariages</a></li>
+                                <li><a href="{{ route('validations_mariage.index') }}">Mariage</a></li>
                                 <li><a href="{{ url('chart/moris') }}">Deces</a></li>
                             </ul>
                         </li>

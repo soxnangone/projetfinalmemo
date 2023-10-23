@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $telephone
  * @property int $Statut
  *
- * @property Naissance $naissance
+ * @property Mariage $mariages
  *
  * @package App\Models
  */

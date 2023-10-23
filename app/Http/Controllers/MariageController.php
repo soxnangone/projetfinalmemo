@@ -8,6 +8,7 @@ use App\Models\Mariage;
 use App\Models\Epoux;
 use App\Models\Officier;
 use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,19 +25,23 @@ class MariageController extends Controller
         $mariage_valide = Mariage::all()->where('validation', '=', 1);
         $epoux = Epoux::all();
         $epouse = Epouse::all();
-        return view('declarations/mariage', compact('title', 'mariage_valide', 'epoux', "epouse"));
+        $temoin = Temoin::all();
+        $officier = Officier::all();
+        return view('declarations/mariage', compact('title', 'mariage_valide', 'epoux', "epouse","temoin","officier"));
 
     }
 
-    /*public function listes_mariages()
+    public function listes_mariages()
     {
         $title = "Declaration-mariage";
         $mariages = Mariage::all()->where('validation', '=', 0);
         $epoux = Epoux::all();
         $epouse = Epouse::all();
-        return view('validations.mariage', compact('title', 'mariages', 'epoux', "epouse"));
+        $officier = Officier::all();
+        $temoin = Temoin::all();
+        return view('validations.mariage', compact('title', 'mariages', 'epoux', "epouse","officier","temoin"));
 
-    }*/
+    }
 
     public function ajout()
     {
@@ -45,12 +50,15 @@ class MariageController extends Controller
         $epouse = new Epouse();
         $temoin= new Temoin();
         $officier= new Officier();
+        $an=Carbon::now();
+
 
         DB::beginTransaction();
         try {
             //mariage
 
             $mariage->num_registre = strtoupper(request('num_registre'));
+            $mariage->annee = $an->year;
             $mariage->heurem = strtoupper(request('heurem'));
             $mariage->datem = request('datem');
             $mariage->lieum = strtoupper(request('lieum'));
@@ -58,12 +66,13 @@ class MariageController extends Controller
             $mariage->regime =  strtoupper(request('regime'));
             $mariage->option =  strtoupper(request('option'));
             $mariage->dot =  strtoupper(request('dot'));
+            $mariage->validation =0;
             $mariage->id_epouse = $epouse->recup_id_epouse;
             $mariage->id_epoux = $epoux->recup_id_epoux;
-            $mariage->id_temoins1=$temoin->recup_id_temoin1;
-            $mariage->id_temoins2=$temoin->recup_id_temoin2;
-            $mariage->id_temoins3=$temoin->recup_id_temoin3;
-            $mariage->id_temoins4=$temoin->recup_id_temoin4;
+            $mariage->id_t1=$temoin->recup_id_temoin1;
+            $mariage->id_t2=$temoin->recup_id_temoin2;
+            $mariage->id_t3=$temoin->recup_id_temoin3;
+            $mariage->id_t4=$temoin->recup_id_temoin4;
             $mariage->id_officier=$officier->recup_id_officier;
             $mariage->id_user=auth()->id();
             $result = $mariage->save();
@@ -85,6 +94,8 @@ class MariageController extends Controller
         $data = Mariage::query()
             ->with('epouse')
             ->with('epoux')
+            ->with('officier')
+            ->with('temoin')
             ->where('validation', '=', 0)->get();
         if ($request->ajax()) {
             return Datatables::of($data)
@@ -97,7 +108,11 @@ class MariageController extends Controller
                 ->make(true);
         }
         $title = 'validation';
-        return view('tables.dynamic', compact('title'));
+        $epoux = Epoux::all();
+        $epouse = Epouse::all();
+        $officier = Officier::all();
+        $temoin = Temoin::all();
+        return view('tables.dynamic', compact('title','epoux','epouse','officier','temoin'));
     }
 
     public function index1(Request $request)
@@ -106,6 +121,8 @@ class MariageController extends Controller
         $data = Mariage::query()
             ->with('epouse')
             ->with('epoux')
+            ->with('officier')
+            ->with('temoin')
             ->get();
         if ($request->ajax()) {
             return Datatables::of($data)
@@ -118,8 +135,8 @@ class MariageController extends Controller
                  }
                  else {
                  $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn  btn-sm modifier"  ><i class="fa fa-edit "></i></a>';
+                }
         }
-    }
         else{
             if ($row->validation == 1) {
                 $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn  btn-sm editMariage"  ><i class="fa fa-plus"></i></a>';
@@ -135,7 +152,11 @@ class MariageController extends Controller
                 ->make(true);
         }
         $title = 'declaration';
-        return view('declarations.mariage', compact('title'));
+        $epoux = Epoux::all();
+        $epouse = Epouse::all();
+        $officier = Officier::all();
+        $temoin = Temoin::all();
+        return view('declarations.mariage', compact('title','epoux','epouse','officier','temoin'));
     }
 
     public function store(Request $request)
@@ -161,6 +182,8 @@ class MariageController extends Controller
         $mariag = Mariage::query()
             ->with('epouse')
             ->with('epoux')
+            ->with('officier')
+            ->with('temoin')
             ->findOrFail($id);
         return response()->json($mariag);
     }
@@ -169,6 +192,8 @@ class MariageController extends Controller
         $mariags = Mariage::query()
             ->with('epouse')
             ->with('epoux')
+            ->with('officier')
+            ->with('temoin')
             ->findOrFail($id);
         return response()->json($mariags);
     }
@@ -179,6 +204,8 @@ class MariageController extends Controller
         $data = Mariage::query()
             ->with('epouse')
             ->with('epoux')
+            ->with('officier')
+            ->with('temoin')
             ->find($id);
         $number = new NumberToWords();
         $num = $number->getNumberTransformer("fr");

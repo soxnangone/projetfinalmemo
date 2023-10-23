@@ -45,7 +45,7 @@
           
             /*modifier epoux*/
           
-            /*afficher donnees Epoux*/
+            /*afficher donnees epoux*/
             var table = $('.table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -80,7 +80,7 @@
                 var epoux_id = $(this).data('id');
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ url('editEpoux') }}" + '/' + epoux_id  ,
+                    url: "{{ url('editepoux') }}" + '/' + epoux_id  ,
                     type: "GET",
                     dataType: 'json',
                     success: function (data) {
@@ -108,12 +108,12 @@
                 })
             });
             /*edit epoux*/
-            $('body').on('click', '.editEpoux', function (e) {
+            $('body').on('click', '.editepoux', function (e) {
 
                 var epoux_id = $(this).data('id');
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ url('editEpoux') }}" + '/' + epoux_id  ,
+                    url: "{{ url('editepoux') }}" + '/' + epoux_id  ,
                     type: "GET",
                     dataType: 'json',
                     success: function (data) {
@@ -176,7 +176,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Epoux <small>Listes Epoux</small></h3>
+                <h3>epouxs <small>Listes epoux</small></h3>
             </div>
 
 
@@ -188,7 +188,7 @@
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Epoux</h2>
+                        <h2>epouxs</h2>
                         <ul class="nav navbar-right panel_toolbox">
 
                             <button type="button"  data-toggle="modal" data-target="#ajaxModel1" class="btn btn-success btn-xs">Nouveau</button>
@@ -244,17 +244,17 @@
             </div>
         </div>
     </div>
-    <!-- AJOUTER EPOUX-->
+    <!-- AJOUTER epoux-->
     <div class="modal fade" id="ajaxModel1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <br class="modal-header">
             <h2>
-                Nouvelle Declaration de Epoux
+                Nouvelle Declaration de epoux
                 <span id="btnClose" class="btnClose">&times;</span>
             </h2>
 
-                <form class="form-horizontal form-label-left" method="POST" action="/ajoutEpoux">
+                <form class="form-horizontal form-label-left" method="POST" action="/ajoutepoux">
                     @csrf
                     <div id="wizard" class="form_wizard wizard_horizontal">
                         <ul class="wizard_steps">
@@ -263,10 +263,10 @@
                                     <span class="step_no">1</span>
                                     <span class="step_descr">
                                       Etape 1<br/>
-                                      <small>Epoux</small>
+                                      <small>epoux</small>
                                   </span>
                                 </a>
-                            </li>
+                            </li>   
                         </ul>
                         <div id="step">
                             <div class="row">
@@ -325,8 +325,8 @@
         </div>
     </div>
     </div>
-    <!-- FIN AJOUTER EPOUX-->
-    <!-- AFFICHEZ INFO EPOUX NON MODIFIABLE-->
+    <!-- FIN AJOUTER epoux-->
+    <!-- AFFICHEZ INFO epoux NON MODIFIABLE-->
     <div class="modal fade" id="ajaxModel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -334,21 +334,21 @@
                     <h1>DETAILS</h1>
 
                         <div class="row">
-                                <center> <h2>Epoux</h2></center>
-                            <input type="hidden" class="form-control" name="epoux_id" id="epoux_id" disabled>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <center> <h2>epoux</h2></center>
+                                <input type="hidden" class="form-control" name="epoux_id" id="epoux_id" disabled>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                            <label for="nin_epoux">NIN</label>
+                            <label for="nin_epoux">Profession</label>
 
                             <input type="text" class="form-control" placeholder="NIN" name="nin_epoux">
                             </div>
                             <div class="form-group">
-                            <label for="nom_epoux">Nom</label>
+                            <label for="nom_epoux">Profession</label>
 
                             <input type="text" class="form-control" placeholder="NOM" name="nom_epoux">
                             </div>
                             <div class="form-group">
-                            <label for="prenom_epoux">Prénom</label>
+                            <label for="prenom_epoux">Profession</label>
 
                             <input type="text" class="form-control" placeholder="PRENOM" name="prenom_epoux">
                             </div>
@@ -382,8 +382,8 @@
                 </div>
                 </div>
             </div>
-    <!-- FIN AFFICHAGE INFO EPOUX NON MODIFIABLE-->
-    <!-- AFFICHEZ INFO EPOUX MODIFIABLE PAR OFFICIER-->
+    <!-- FIN AFFICHAGE INFO epoux NON MODIFIABLE-->
+    <!-- AFFICHEZ INFO epoux MODIFIABLE PAR OFFICIER-->
     <div class="modal fade" id="ajaxModel2" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -395,7 +395,7 @@
                         @csrf
 
                     <section>
-                      <center>  <p>Epoux</p></center>
+                      <center>  <p>epoux</p></center>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                             <label for="nin_epoux">Profession</label>
@@ -451,7 +451,7 @@
         </div>
     </div>
 
-    <!-- FIN AFFICHAGE INFO EPOUX MODIFIABLE PAR OFFICIER-->
+    <!-- FIN AFFICHAGE INFO epoux MODIFIABLE PAR OFFICIER-->
 
 
 @endsection

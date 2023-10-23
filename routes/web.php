@@ -222,7 +222,7 @@ Route::post('/ajoutEpouse', 'EpouseController@ajout');
 Route::post('/ajoutTemoin', 'TemoinController@ajout');
 Route::post('/ajoutOfficier', 'OfficierController@ajout');
 
-Route::get('declarations/Mariage', 'MariageController@index1')->name('Mariage_valide');
+Route::get('declarations/Mariage', 'MariageController@index1')->name('mariage_valide');
 Route::get('/editnaisse/{id}', 'MariageController@edit');
 Route::get('/editnaiss/{id}', 'MariageController@editnaiss');
 Route::resource('validations_mariage', 'MariageController');
@@ -246,6 +246,7 @@ Route::resource('validations_officier', 'OfficierController');
 Route::get('/statu/{id}', 'UtilisateurController@upStat')->name('upda');
 
 Route::resource('impression_extrait_mariage', 'ImpressionController');
+Route::get('declarations/volet/{id}', [MariageController::class, 'getPdf']);
 Route::get('declarations/volet/{id}', [MariageController::class, 'getPdf']);
 Route::get('impressions/{id}', [ImpressionController::class, 'getPdf']);
 Route::get('declarations/mariage/{nin_epoux}', [MariageController::class, 'MariageByNin_epoux']);

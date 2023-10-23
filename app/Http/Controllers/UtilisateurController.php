@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Forma;
-use App\Models\Naissance;
+use App\Models\Mariage;
 use App\Models\Utilisateur;
 use http\Message;
 use Illuminate\Auth\AuthManager;
@@ -86,8 +85,6 @@ class UtilisateurController extends Controller
         ]);
         if ($user) {
             if (request('password') == "passer") {
-                return view('new_login');
-            } else {
                 return redirect()->route('dashboard');
             }
         } else {

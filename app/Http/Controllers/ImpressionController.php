@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Forma;
-use App\Models\Naissance;
+use App\Models\Epoux;
+use App\Models\Epouse;
+use App\Models\Officier;
+use App\Models\Temoin;
+use App\Models\Mariage;
 use Illuminate\Http\Request;
 use NumberToWords\NumberToWords;
 use Yajra\DataTables\DataTables;
@@ -12,32 +15,37 @@ class ImpressionController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Naissance::query()
-            ->with('mere')
-            ->with('pere')
-            ->with('declarant')
-            ->where('validation', '=', 1)->get();
+        $data = Mariage::query()
+            ->with('epouse')
+            ->with('epoux')
+            ->with('temoin')
+            ->with('officier')
+            ->where('validation', '=', 0)->get();
         if ($request->ajax()) {
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn  btn-sm printNaissance" ><i class="fa fa-print"></i></a>';
-                    $btn = $btn . '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn  btn-sm editNaissance"  ><i class="fa fa-plus"></i></a>';
-                    return $btn;
+                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editMariage" ><i class="fa fa-check"></i></a>';
+                        return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        $formations = Forma::all();
         $title = 'validation';
-        return view('tables.index', compact('formations', 'title'));
+        $epoux = Epoux::all();
+        $epouse = Epouse::all();
+        $officier = Officier::all();
+        $temoin = Temoin::all();
+        return view('tables.dynamic', compact('title','epoux','epouse','officier','temoin'));
     }
+
     public function getPdf($id)
     {
-        $data = Naissance::query()
-            ->with('mere')
-            ->with('pere')
-            ->with('declarant')
+        $data = Mariage::query()
+            ->with('epoux')
+            ->with('epouse')
+            ->with('temoin')
+            ->with('officier')
             ->find($id);
         $number = new NumberToWords();
         $num = $number->getNumberTransformer("fr");

@@ -64,7 +64,7 @@
                         name: 'date_naiss'
                     },
                   
-                    {data: 'lieu_naiss', name: 'lieu_naiss'},
+                    {data: 'lieu_naissance', name: 'lieu_naissance'},
                     {data: 'domicile', name: 'domicile'},
                     {data: 'profession', name: 'profession'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -136,7 +136,7 @@
                 e.preventDefault();
                 $.ajax({
                     data: $('#form').serialize(),
-                    url: "{{ route('validations.store') }}",
+                    url: "{{ route('validations_temoin.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
@@ -214,14 +214,12 @@
                             <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>NIN</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Date Naisssance</th>
                                 <th>lieu Naissance</th>
                                 <th>Domicile</th>
                                 <th>Profession</th>
-                                <th>Situation Matrimoniale</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

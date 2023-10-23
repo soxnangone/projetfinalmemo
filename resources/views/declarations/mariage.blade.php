@@ -111,8 +111,6 @@
                         },
                         name: 'date_dec'
                     },
-                    {data: 'epoux.prenom_epoux', name: 'epoux.prenom_epoux'},
-                    {data: 'epouse.prenom_epouse', name: 'epouse.prenom_epouse'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ],
 
@@ -137,17 +135,10 @@
                         var date = new Date(data.datem);
                         var month = date.getMonth() + 1;
 
-                        var date_decl = new Date(data.date_decl);
+                        var date_dec = new Date(data.date_dec);
                         var month_dec = date_dec.getMonth() + 1;
 
-                        var date_epoux = new Date(data.epoux.date_naiss_epoux);
-                        var month_epoux = date_epoux.getMonth() + 1;
-
-                        var date_epouse = new Date(data.epouse.date_naiss_epouse);
-                        var month_epouse = date_epouse.getMonth() + 1;
-
-                        var date_temoin = new Date(data.temoin.date_naissance);
-                        var month_temoin = date_temoin.getMonth() + 1;
+                       
 
                         $('#ajaxModel2').modal('show');
                         $('#mariage_id').val(data.id);
@@ -155,7 +146,7 @@
                         $('#option').val(data.option);
                         $('#lieum').val(data.lieum);
                         $('#regime').val(data.regime);
-                        $('#date_dec').val((date_decl.getDate().toString().length > 1 ? +date_decl.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_decl.getDate());
+                        $('#date_dec').val((date_dec.getDate().toString().length > 1 ? +date_dec.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_dec.getDate());
                         $('#datem').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "_" + date.getDate());
                         $('#dot').val(data.dot);
                         $('#heurem').val(data.heurem);
@@ -174,33 +165,6 @@
                             $('#normal').attr('checked', false);
                             $('#tardiv').attr('checked', false);
                         }
-                        $('#id_epoux').val(data.epoux.id);
-                        $('#nin_epoux').val(data.epoux.nin_epoux);
-                        $('#nom_epoux').val(data.epoux.nom_epoux);
-                        $('#prenom_epoux').val(data.epoux.prenom_epoux);
-                        $('#date_naiss_epoux').val((date_epoux.getDate().toString().length > 1 ? +date_epoux.getFullYear() : "0") + "_" + (month_epoux.toString().length > 1 ? month : "0" + month) + "-" + date_epoux.getDate());
-                        $('#lieu_naiss_epoux').val(data.epoux.lieu_naiss_epoux);
-                        $('#domicile_epoux').val(data.epoux.domicile_epoux);
-                        $('#profession_epoux').val(data.epoux.profession_epoux);
-                        $('#situation_mat_epoux').val(data.epoux.situation_mat_epoux);
-                        $('#id_epouse').val(data.epouse.id);
-                        $('#nin_epouse').val(data.epouse.nin_epouse);
-                        $('#nom_epouse').val(data.epouse.nom_epouse);
-                        $('#prenom_epouse').val(data.epouse.prenom_epouse);
-                        $('#datenaissance_epouse').val((date_epouse.getDate().toString().length > 1 ? +date_epouse.getFullYear() : "0") + "-" + (month_epouse.toString().length > 1 ? month : "0" + month) + "-" + date_epouse.getDate());
-                        $('#lieu_naissance_epouse').val(data.epouse.lieu_naissm);
-                        $('#domicile_epouse').val(data.epouse.domicile_epouse);
-                        $('#profession_epouse').val(data.epouse.profession_epouse);
-                        $('#situation_mat_epouse').val(data.epoux.situation_mat_epouse);
-
-                        $('#id').val(data.temoin.id);
-                        $('#nin').val(data.temoin.nin);
-                        $('#nom').val(data.temoin.nom);
-                        $('#prenom').val(data.temoin.prenom);
-                        $('#date_naissance').val((date_temoin.getDate().toString().length > 1 ? +date_temoin.getFullYear() : "0") + "-" + (month_temoin.toString().length > 1 ? month : "0" + month) + "-" + date_temoin.getDate());
-                        $('#lieu-naissance').val(data.temoin.lieu_naissance);
-                        $('#domicile').val(data.temoin.domicile);
-                        $('#profession').val(data.temoin.profession);
                     },
                     error: function (data) {
                         console.log('Error:', data);
@@ -227,7 +191,7 @@
                         $('#lieum').val(data.lieum);
                         $('#regime').val(data.regime);
                         $('#datem').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate());
-                        $('#date_dec').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate());
+                        $('#date_dec').val((date_dec.getDate().toString().length > 1 ? +date_dec.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_dec.getDate());
                         $('#dot').val(data.dot);
                         $('#heurem').val(data.heurem);
                     },
@@ -320,13 +284,12 @@
                             <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>N° Declaration</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Sexe</th>
-                                <th>Date Naisssance</th>
-                                <th>Prenom Epoux</th>
-                                <th>Prenom Mere</th>
+                                <th>N° Régistre</th>
+                                <th>Lieu Mariage</th>
+                                <th>Régime</th>
+                                <th>option</th>
+                                <th>Date Mariage</th>
+                                <th>Date Déclaration</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -344,8 +307,8 @@
             </div>
         </div>
     </div>
-    <!-- AJOUTER MARIAGE-->
-    <div class="modal fade" id="ajaxModel1" aria-hidden="true">
+   <!-- AJOUTER MARIAGE-->
+   <div class="modal fade" id="ajaxModel1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <br class="modal-header">
@@ -407,8 +370,6 @@
                         </ul>
                         <div id="step">
                             <div class="row">
-
-
 
                                 </div>
 
@@ -642,7 +603,7 @@
                                 </div>
                             </div>
                         </div>
-                                </div>
+                    </div>
                 </form>
             <!-- End SmartWizard Content -->
         </div>
@@ -659,14 +620,20 @@
                         <div class="row">
                                 <center> <h2>Mariage</h2></center>
                                 <input type="hidden" class="form-control" name="mariage_id" id="mariage_id" disabled>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                 <div class="form-group">
                                     <label for="username">Numero Régistre </label>
 
                                     <input type="text" required class="form-control" placeholder="Nunero Registre *"
                                            name="num_registre" id="num_registre"  disabled>
                                 </div>
-                            </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <label for="username">Date Mariage</label>
+                                    <input class="form-control"  name="datem" id="datem"  disabled>
+                                </div>
+                                </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                 <div class="form-group">
                                     <label for="username">Lieu Mariage </label>
@@ -677,18 +644,134 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                 <div class="form-group">
+                                    <label for="username">Heure Mariage</label>
+                                    <input type="date" class="form-control" name="heurem" id="heurem" placeholder="HEURE *" required>
+                                </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                            <label for="username">REGIME</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="regime" required>
+
+                                                <option >Communaute des biens</option>
+                                                <option >Separation des biens</option>
+
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                            <label for="username">Option</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="option" required>
+
+                                                <option >Monogamie</option>
+                                                <option >Polygamie</option>
+                                                <option >Polygamie a deux</option>
+                                                <option >Polygamie a trois</option>
+                                                <option >Polygamie a quatre</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
                                     <label for="username">Dot </label>
                                     <input type="text" class="form-control" placeholder="Dot *" required
                                            name="dot" id="dot"  disabled>
                                 </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <div class="form-group">
-                                    <label for="username">Date Mariage</label>
-                                    <input class="form-control"  name="datem" id="datem"  disabled>
-                                </div>
-                                </div>
                             </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center> <h2>Epoux</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Epoux</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_epoux">
+
+                                        <option selected disabled>choose....</option>
+                                          @foreach($epoux as $epx)
+                                            <option value="{{$epx->id}}">{{$epx->prenom_epoux}} {{$epx->nom_epoux}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center> <h2>Epouse</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Epouse</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_epouse">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($epouse as $epse)
+                                            <option value="{{$epse->id}}">{{$epse->prenom_epouse}} {{$epse->nom_epouse}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center>     <h2>Témoins</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Temoin 1</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t1">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t1)
+                                            <option value="{{$t1->id}}">{{$t1->prenom}} {{$t1->nom}}</option>
+                                        @endforeach
+                                     </select>
+                        </div>
+                        <div class="form-group">
+                                    <label for="username">Temoin 2</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t2">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t2)
+                                            <option value="{{$t2->id}}">{{$t2->prenom}} {{$t2->nom}}</option>
+                                        @endforeach
+                                    </select>
+                        </div>
+                        <div class="form-group">
+                                    <label for="username">Temoin 3</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t3">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t3)
+                                            <option value="{{$t3->id}}">{{$t3->prenom}} {{$t3->nom}}</option>
+                                        @endforeach
+                                     </select> 
+                        </div>  
+                        <div class="form-group">
+                                    <label for="username">Temoin 4</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t4">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t4)
+                                            <option value="{{$t4->id}}">{{$t4->prenom}} {{$t4->nom}}</option>
+                                        @endforeach
+                                     </select>
+                          </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center>  <h2>Officier</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Officier</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_officier">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($officier as $off)
+                                            <option value="{{$off->id}}">{{$off->prenom_officier}} {{$off->nom_officier}}</option>
+                                        @endforeach
+                                    </select>
+                          </div>
+                    </div>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -706,45 +789,221 @@
 
                     <section>
                       <center>  <p>Mariage</p></center>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <input type="hidden" class="form-control" name="mariage_id" id="mariage_id">
-                            <div class="form-group">
-                                <label for="username">Numero Régistre </label>
-                                <input type="text" required class="form-control" placeholder="Nunero Declaration *"
-                                       name="num_registre" id="num_registre">
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Lieu Mariage </label>
-                                <input type="text" class="form-control" placeholder="Lieu *" required
-                                       name="lieum" id="lieum">
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Heure Mariage </label>
-                                <input type="text" class="form-control" placeholder="Prenom *" required
-                                       name="heurem" id="heurem">
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Date mariage</label>
-                                <input  class="form-control" name="datem" id="datem">
-                            </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <label for="username">Numero Régistre </label>
 
-                            <div class="form-group">
-                                <label for="username">Régime </label>
-                                <input type="text" class="form-control" placeholder="Régime *"
-                                       name="regime" id="regime">
+                                    <input type="text" required class="form-control" placeholder="Numéro Régistre *"
+                                           name="num_registre" id="num_registre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Date Déclaration </label>
+                                    <input type="date" class="form-control" placeholder="DATE *" required
+                                           name="date_dec" id="date_dec">
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Date Mariage </label>
+                                    <input type="date" class="form-control" placeholder="DATE *" required
+                                           name="datem" id="datem">
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Heure Mariage</label>
+                                    <input type="date" class="form-control" name="heurem" id="heurem" placeholder="HEURE *" required>
+                                </div>
 
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Option</label>
-                                <input type="text" class="form-control" placeholder="Option *"
-                                       name="option" id="option"  >
+                                <div class="form-group"  id="num_jugement"  style="visibility: hidden">
+                                        <label for="username">Lieu Mariage </label>
+                                        <input type="text" class="form-control" placeholder="LIEU *"
+                                               name="LIEUM" id="lieum" required>
+
+                                </div>
 
                             </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="username">Option</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="option" required>
 
-                        </div>
-                    
+                                                <option >Monogamie</option>
+                                                <option >Polygamie</option>
+                                                <option >Polygamie a deux</option>
+                                                <option >Polygamie a trois</option>
+                                                <option >Polygamie a quatre</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">REGIME</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="regime" required>
+
+                                                <option >Communaute des biens</option>
+                                                <option >Separation des biens</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Type Déclaration</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="type_dec" required>
+
+                                                <option >NORMALE</option>
+                                                <option >TARDIVE</option>
+
+                                            </select>
+                                        </div>
+                                <div class="form-group">
+                                    <label for="username">Dot </label>
+                                    <input type="number" class="form-control" placeholder="Dot *" required
+                                           name="dot">
+                                </div>
+                            </div>
                     </section>
 
+                    <section>
+                      <center>  <p>Mariés</p></center>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>EPOUX</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Epoux</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_epoux">
+
+                                        <option selected disabled>choose....</option>
+                                          @foreach($epoux as $epx)
+                                            <option value="{{$epx->id}}">{{$epx->prenom_epoux}} {{$epx->nom_epoux}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                              
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>EPOUSE</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Epouse</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_epouse">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($epouse as $epse)
+                                            <option value="{{$epse->id}}">{{$epse->prenom_epouse}} {{$epse->nom_epouse}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                    </section>
+
+                    <section>
+                      <center> <p>Temoins</p></center>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>Temoin 1</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin1</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t1">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t1)
+                                            <option value="{{$t1->id}}">{{$t1->prenom}} {{$t1->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>Temoin2</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin2</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t2">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t2)
+                                            <option value="{{$t2->id}}">{{$t2->prenom}} {{$t2->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>Temoin3</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin3</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t3">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t3)
+                                            <option value="{{$t3->id}}">{{$t3->prenom}} {{$t3->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>Temoin4</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin4</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t4">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t4)
+                                            <option value="{{$t4->id}}">{{$t4->prenom}} {{$t4->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                    </section>
+                    <section>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center>  <h2>Officier</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Officier</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_officier">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($officier as $off)
+                                            <option value="{{$off->id}}">{{$off->prenom_officier}} {{$off->nom_officier}}</option>
+                                        @endforeach
+                                    </select>
+                          </div>
+                    </div>
+                    </section>
                     <section>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <center><h5>MENTION MARGINALE</h5></center>

@@ -15,7 +15,7 @@ class homecontroller extends Controller
             ->select('type_dec', DB::raw('count(*) as total'))
             ->groupBy('type_dec')
             ->get();
-        $mariageByUser = Utilisateur::with('mariage')
+        $mariageByUser = Utilisateur:: with('mariage')
          ->select('username', DB::raw('count(*) as total'))
             ->groupBy('username')
             ->get();

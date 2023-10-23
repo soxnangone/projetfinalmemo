@@ -151,7 +151,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Officiers <small>Listes Officier</small></h3>
+                <h3>Officiers <small>Listes des  Officier</small></h3>
             </div>
 
 

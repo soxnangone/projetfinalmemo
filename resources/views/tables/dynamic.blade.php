@@ -53,7 +53,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Validations <small>Naissances</small></h2>
+                        <h2>Validations <small>Mariages</small></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -61,14 +61,13 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th>N°</th>
-                                <th>N° Declaration</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Sexe</th>
-                                <th>Date Naisssance</th>
-                                <th>Prenom Pere</th>
-                                <th>Prenom Mere</th>
+                              <th>N°</th>
+                                <th>N° Régistre</th>
+                                <th>Lieu Mariage</th>
+                                <th>Régime</th>
+                                <th>option</th>
+                                <th>Date Mariage</th>
+                                <th>Date Déclaration</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -87,364 +86,146 @@
                 <div class="modal-header">
                     <div id="svg_wrap"></div>
 
-                    <center>  <h1>Validation Naissance</h1></center>
-                    <form class="form-horizontal form-label-left" id="form_naissance">
+                    <center>  <h1>Validation Mariage</h1></center>
+                    <form class="form-horizontal form-label-left" id="form_mariage">
                         @csrf
                         <section>
-                            <center>  <p>Informations Enfant</p></center>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <input type="hidden" class="form-control" name="naissance_id" id="naissance_id">
+                      <center>  <p>Mariage</p></center>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group">
-                                    <label for="username">Numero Declaration </label>
-                                    <input type="text" required class="form-control" placeholder="Nunero Declaration *"
+                                    <label for="username">Numero Régistre </label>
+
+                                    <input type="text" required class="form-control" placeholder="Numéro Régistre *"
                                            name="num_registre" id="num_registre">
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Nom </label>
-                                    <input type="text" class="form-control" placeholder="Nom *" required
-                                           name="nom_enfant" id="nom_enfant">
+                                    <label for="username">Date Déclaration </label>
+                                    <input type="date" class="form-control" placeholder="DATE *" required
+                                           name="date_dec" id="date_dec">
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Prenom </label>
-                                    <input type="text" class="form-control" placeholder="Prenom *" required
-                                           name="prenom_enfant" id="prenom_enfant">
+                                    <label for="username">Date Mariage </label>
+                                    <input type="date" class="form-control" placeholder="DATE *" required
+                                           name="datem" id="datem">
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Date Naissance</label>
-                                    <input  class="form-control" name="date_naissance" id="date_naissance">
+                                    <label for="username">Heure Mariage</label>
+                                    <input type="date" class="form-control" name="heurem" id="heurem" placeholder="HEURE *" required>
                                 </div>
 
                                 <div class="form-group"  id="num_jugement"  style="visibility: hidden">
-                                    <label for="username">Numero Jugement </label>
-                                    <input type="text" class="form-control" placeholder="Numero Jugemnt *"
-                                           name="num_jugement" id="num_jugement">
-
-                                </div>
-                                <div class="form-group" id="nom_tribunal"  style="visibility: hidden">
-                                    <label for="username">Nom Tribunal</label>
-                                    <input type="text" class="form-control" placeholder="Nom Tribunal *"
-                                           name="nom_tribunal" id="nom_tribunal"  >
+                                        <label for="username">Lieu Mariage </label>
+                                        <input type="text" class="form-control" placeholder="LIEU *"
+                                               name="LIEUM" id="lieum" required>
 
                                 </div>
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group">
-                                    <label for="username">Annee </label>
-                                    <input type="text" required class="form-control"
-                                           name="annee" id="annee" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="username">Lieu Naissance </label>
-                                    <input type="text" class="form-control" placeholder="Lieu Naissance *" required
-                                           name="lieu_naissance" id="lieu_naissance">
-                                </div>
-                                <div class="form-group">
-                                    <label for="username">Heure </label>
-                                    <input type="number" class="form-control" placeholder="Heure *" required
-                                           name="heure_naissance" id="heure_naissance">
-                                </div>
+                                        <div class="form-group">
+                                            <label for="username">Option</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="option" required>
 
+                                                <option >Monogamie</option>
+                                                <option >Polygamie</option>
+                                                <option >Polygamie a deux</option>
+                                                <option >Polygamie a trois</option>
+                                                <option >Polygamie a quatre</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">REGIME</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="regime" required>
+
+                                                <option >Communaute des biens</option>
+                                                <option >Separation des biens</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username">Type Déclaration</label>
+                                            <select  class="form-control pro-edt-select form-control-primary" name="type_dec" required>
+
+                                                <option >NORMALE</option>
+                                                <option >TARDIVE</option>
+
+                                            </select>
+                                        </div>
                                 <div class="form-group">
-                                    <label for="username">Formation Sanitaire</label>
+                                    <label for="username">Dot </label>
+                                    <input type="number" class="form-control" placeholder="Dot *" required
+                                           name="dot">
+                                </div>
+                            </div>
+                    </section>
+
+                    <section>
+                      <center>  <p>Mariés</p></center>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>EPOUX</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Epoux</label>
                                     <select class="form-control pro-edt-select form-control-primary" required
-                                            name="formation_sanitaire" id="formation_sanitaire" >
+                                            name="id_epoux">
 
                                         <option selected disabled>choose....</option>
-                                        @foreach($formations as $forma)
-                                            <option value="{{$forma->id}}">{{$forma->nom_formation}}</option>
+                                          @foreach($epoux as $epx)
+                                            <option value="{{$epx->id}}">{{$epx->prenom_epoux}} {{$epx->nom_epoux}}</option>
                                         @endforeach
                                     </select>
+                                    </div>
+                                 </div>
                                 </div>
-
-                                <div class="form-group"  id="date_jugement" style="visibility: hidden">
-                                    <label for="username">Date Jugement</label>
-                                    <input type="date" class="form-control" name="date_jugement" id="date_jugement"
-                                    >
-                                </div>
-
-
-
-
+                              
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-group">
-                                    <center> <label for="username">Sexe</label></center>
-                                    <div class="form-check">
-                                        <center>   Masculin<input class="form-check-input" type="radio" name="sexe" id="masculin"
-                                                                  value="Masculin" >
-                                        </center>
-                                    </div>
-                                    <div class="form-check">
-                                        <center>    Feminin<input class="form-check-input" type="radio" name="sexe" id="feminin"
-                                                                  value="Feminin">
-                                        </center>
-                                    </div>
-
-                                </div>
-                                <div class="form-group">
-                                    <center> <label for="username">TYPE DECLARATION</label></center>
-                                    <div class="form-check">
-                                        <center>   Normale  <input class="form-check-input" type="radio" name="type_declaration"
-                                                                   id="normale" value="Normale" >  </center>
-                                    </div>
-                                    <div class="form-check">
-                                        <center> Tardive <input class="form-check-input" type="radio" name="type_declaration"
-                                                                id="tardive" value="Tardive" >  </center>
-                                    </div>
-                                    <div class="form-check">
-                                        <center>Jugement <input class="form-check-input" type="radio" name="type_declaration"
-                                                                id="jugement" value="jugement" > </center>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
-                            <center>  <p>Parents</p></center>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
-                                <center><h5>PERE</h5></center>
+                                <center><h5>EPOUSE</h5></center>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="hidden" class="form-control"  id="id_pere" name="id_pere">
-                                        <div class="form-group">
+                                    <div class="form-group">
+                                    <label for="username">Epouse</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_epouse">
 
-                                            <input type="text" class="form-control" placeholder="Nin "
-                                                   id="nin_pere" name="nin_pere">
-                                        </div>
+                                        <option selected disabled>choose....</option>
+                                        @foreach($epouse as $epse)
+                                            <option value="{{$epse->id}}">{{$epse->prenom_epouse}} {{$epse->nom_epouse}}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Nom </label>
-                                            <input type="text" class="form-control" placeholder="Nom "
-                                                   id="nom_pere" name="nom_pere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Prenom</label>
-                                            <input type="text" class="form-control" placeholder="Prenom "
-                                                   id="prenom_pere" name="prenon_pere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Date Naissance</label>
-                                            <input  class="form-control"
-                                                    id="datenaissance_pere" name="datenaissance_pere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Lieu Naissance</label>
-                                            <input type="text" class="form-control" placeholder="LIEU NAISSANCE " name="lieu_naissance_pere" id="lieu_naissance_pere">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Domicile</label>
-                                            <input type="text" class="form-control" placeholder="DOMICILE " id="domicile_pere" name="domicile_pere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Profession</label>
-                                            <input type="text" class="form-control" placeholder="PROFFESSION "
-                                                   id="profession_pere" name="profession_pere">
-                                        </div>
-                                    </div>
+                                 </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <center><h5>MERE</h5></center>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <input type="hidden" class="form-control" name="id_mere" id="id_mere">
-                                        <div class="form-group">
+                    </section>
 
-                                            <input type="text" class="form-control" placeholder="Nin "
-                                                   id="nin_mere" name="nin_mere">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Nom </label>
-                                            <input type="text" class="form-control" placeholder="Nom "
-                                                   id="nom_mere" name="nom_mere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Prenom</label>
-                                            <input type="text" class="form-control" placeholder="Prenom "
-                                                   id="prenom_mere" name="prenon_pere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Date Naissance</label>
-                                            <input  class="form-control"
-                                                    id="datenaissance_mere" name="datenaissance_mere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Lieu Naissance</label>
-                                            <input type="text" class="form-control" placeholder="LIEU NAISSANCE "
-                                                   id="lieu_naissance_mere" name="lieu_naissance_mere">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Domicile</label>
-                                            <input type="text" class="form-control" placeholder="DOMICILE "
-                                                   id="domicile_mere" name="domicile_mere">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Profession</label>
-                                            <input type="text" class="form-control" placeholder="PROFFESSION "
-                                                   id="profession_mere" name="profession_mere">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
-                            <center> <p>Declarant</p></center>
-                            <div class="col-md-12">
-                                <input type="hidden" class="form-control" name="id_declarant" id="id_declarant">
-                                <div class="form-group">
-                                    <label for="username">Nin</label>
-                                    <input type="text" class="form-control" placeholder="Nin *"
-                                           name="nin_declarant" id="nin_declarant">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Nom </label>
-                                        <input type="text" class="form-control" placeholder="Nom *"
-                                               name="nom_declarant" id="nom_declarant">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Prenom</label>
-                                        <input type="text" class="form-control" placeholder="Prenom *"
-                                               name="prenom_declarant" id="prenom_declarant">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Date Naissance</label>
-                                        <input  class="form-control" name="datenaissance_declarant"
-                                                id="datenaissance_declarant">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Lieu Naissance</label>
-                                        <input type="text" class="form-control" placeholder="LIEU NAISSANCE *"
-                                               name="lieu_naissance_declarant" id="lieu_naissance_declarant">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Domicile</label>
-                                        <input type="text" class="form-control" placeholder="DOMICILE *"
-                                               name="domicile_declarant" id="domicile_declarant">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="username">Profession</label>
-                                        <input type="text" class="form-control" placeholder="PROFFESSION *"
-                                               name="profession_declarant" id="profession_declarant">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
-                            <center> <p>Temoins</p></center>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <section>
+                      <center> <p>Temoins</p></center>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
 
                                 <center><h5>Temoin 1</h5></center>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                    <div class="form-group">
+                                    <label for="username">Temoin1</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t1">
 
-                                            <input type="text" class="form-control" placeholder="Nin "
-                                                   id="nin_t1" name="nin_t1" >
-                                        </div>
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t1)
+                                            <option value="{{$t1->id}}">{{$t1->prenom}} {{$t1->nom}}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Nom </label>
-                                            <input type="text" class="form-control" placeholder="Nom "
-                                                   id="nom-t1">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Prenom</label>
-                                            <input type="text" class="form-control"
-                                                   id="prenom-t1">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Date Naissance</label>
-                                            <input type="date" class="form-control"
-                                                   id="datenaissance-t1">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Lieu Naissance</label>
-                                            <input type="text" class="form-control" placeholder="LIEU NAISSANCE "
-                                                   id="lieu-naissance_t1">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Domicile</label>
-                                            <input type="text" class="form-control" placeholder="DOMICILE "
-                                                   id="domicile-t1">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Profession</label>
-                                            <input type="text" class="form-control" placeholder="PROFFESSION "
-                                                   id="profession-t1">
-                                        </div>
-                                    </div>
+                                 </div>
                                 </div>
                             </div>
 
@@ -454,71 +235,85 @@
                                 <center><h5>Temoin2</h5></center>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                    <div class="form-group">
+                                    <label for="username">Temoin2</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t2">
 
-                                            <input type="text" class="form-control" placeholder="Nin "
-                                                   id="nin-t2">
-                                        </div>
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t2)
+                                            <option value="{{$t2->id}}">{{$t2->prenom}} {{$t2->nom}}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Nom </label>
-                                            <input type="text" class="form-control" placeholder="Nom "
-                                                   id="nom-t2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Prenom</label>
-                                            <input type="text" class="form-control" placeholder="Prenom "
-                                                   id="prenom-t2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Date Naissance</label>
-                                            <input type="date" class="form-control"
-                                                   id="datenaissance-t2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Lieu Naissance</label>
-                                            <input type="text" class="form-control" placeholder="LIEU NAISSANCE "
-                                                   id="lieu-naissance_t2">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Domicile</label>
-                                            <input type="text" class="form-control" placeholder="DOMICILE "
-                                                   id="domicile-t2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="username">Profession</label>
-                                            <input type="text" class="form-control" placeholder="PROFFESSION "
-                                                   id="profession-t2">
-                                        </div>
-                                    </div>
+                                 </div>
                                 </div>
                             </div>
-                        </section>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-                        <section>
+
+                                <center><h5>Temoin3</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin3</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t3">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t3)
+                                            <option value="{{$t3->id}}">{{$t3->prenom}} {{$t3->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+                                <center><h5>Temoin4</h5></center>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="form-group">
+                                    <label for="username">Temoin4</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_t4">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($temoin as $t4)
+                                            <option value="{{$t4->id}}">{{$t4->prenom}} {{$t4->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                 </div>
+                                </div>
+                            </div>
+                    </section>
+                    <section>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <center>  <h2>Officier</h2></center>
+                        <div class="form-group">
+                                    <label for="username">Officier</label>
+                                    <select class="form-control pro-edt-select form-control-primary" required
+                                            name="id_officier">
+
+                                        <option selected disabled>choose....</option>
+                                        @foreach($officier as $off)
+                                            <option value="{{$off->id}}">{{$off->prenom_officier}} {{$off->nom_officier}}</option>
+                                        @endforeach
+                                    </select>
+                          </div>
+                    </div>
+                    </section>
+                    <section>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <center><h5>MENTION MARGINALE</h5></center>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <center><h5>MENTION MARGINALE</h5></center>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <center>   <textarea name="mention" id="mention" type="text" style="width: 80%;" rows="10">  </textarea></center>
-                                </div><br/>
-                            </div>
-                        </section>
+                             <center>   <textarea name="mention" id="mention" type="text" style="width: 80%;" rows="10">  </textarea></center>
+                            </div><br/>
+                        </div>
+                    </section>
 
                         <center> <div class=" btn  btn-success" id="prev"> Precedent</div>
                             <div class=" btn  btn-success" id="next">Suivant </div>
@@ -590,9 +385,7 @@
                                         name="formation_sanitaire" id="formation_sanitaire">
 
                                     <option selected disabled>choose....</option>
-                                    @foreach($formations as $forma)
-                                        <option value="{{$forma->id}}">{{$forma->nom_formation}}</option>
-                                    @endforeach
+                                  
                                 </select>
                             </div>
                         </div>
@@ -785,176 +578,203 @@
 @endsection
 <script src="{{ url('js/jquery.js') }}"></script>
 <script type="text/javascript">
-    $(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        var table = $('.table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('validations_naissance.index') }}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'num_registre', name: 'num_registre'},
-                {data: 'nom_enfant', name: 'nom_enfant'},
-                {data: 'prenom_enfant', name: 'prenom_enfant'},
-                {data: 'sexe', name: 'sexe'},
-                {
-                    data: 'date_naiss',
-                    render: function (data) {
-                        var date = new Date(data);
-                        var month = date.getMonth() + 1;
-                        return (date.getDate().toString().length > 1 ? date.getDate() : "0" + date.getDate()) + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear()
-                    },
-                    name: 'date_naiss'
-                },
-                {data: 'pere.prenom_pere', name: 'pere.prenom_pere'},
-                {data: 'mere.prenom_mere', name: 'mere.prenom_mere'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
-            ],
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
-        });
-
-        $('#date_naissance').on('change keyup', function () {
-            if (this.value.length === 10) {
-                var debut = Date.parse($('#date_naissance').val());
-                var fin = Date.parse(new Date());
-                var diff = new Date(fin - debut);
-                console.log('diff', diff);
-                var jour = diff / 86400000;
-                if (jour < 45) {
-                    $('#normale').prop('checked', true);
-                    $('#tardive').prop('checked', false);
-                    $('#jugement').prop('checked', false);
-                    $('#normale').prop('disabled', false);
-                    document.getElementById('date_jugement').style.visibility='hidden';
-                    document.getElementById('num_jugement').style.visibility='hidden';
-                    document.getElementById('nom_tribunal').style.visibility='hidden';
-                } else if(jour > 360) {
-                    $('#normale').prop('checked', false);
-                    $('#tardive').prop('checked', false);
-                    $('#jugement').prop('checked', true);
-                    $('#jugement').prop('disabled', false);
-                    document.getElementById('date_jugement').style.visibility='visible';
-                    document.getElementById('num_jugement').style.visibility='visible';
-                    document.getElementById('nom_tribunal').style.visibility='visible';
-                }
-                else{
-                    $('#normale').prop('checked', false);
-                    $('#tardive').prop('checked', true);
-                    $('#jugement').prop('checked', false);
-                    $('#tardive').prop('disabled', false);
-                    document.getElementById('date_jugement').style.visibility='hidden';
-                    document.getElementById('num_jugement').style.visibility='hidden';
-                    document.getElementById('nom_tribunal').style.visibility='hidden';
-                }
-            }
-        });
-
-        $('body').on('click', '.editNaissance', function () {
-            var naissance_id = $(this).data('id');
-            $.get("{{ route('validations_naissance.index') }}" + '/' + naissance_id + '/edit', function (data) {
-                var date = new Date(data.date_naiss);
-                var month = date.getMonth() + 1;
-
-                var date_pere = new Date(data.pere.date_naissp);
-                var month_mere = date_pere.getMonth() + 1;
-
-                var date_mere = new Date(data.mere.date_naissm);
-                var month_pere = date_mere.getMonth() + 1;
-
-                var date_declarant = new Date(data.declarant.date_naissd);
-                var month_declarant = date_declarant.getMonth() + 1;
-
-                $('#modelHeading').html("Edit ");
-                $('#ajaxModel').modal('show');
-                $('#naissance_id').val(data.id);
-                $('#num_registre').val(data.num_registre);
-                $('#annee').val(data.annee);
-                $('#nom_enfant').val(data.nom_enfant);
-                $('#prenom_enfant').val(data.prenom_enfant);
-                $('#date_naissance').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate());
-                $('#lieu_naissance').val(data.lieu_naiss);
-                $('#heure_naissance').val(data.heure_naiss);
-                $('#formation_sanitaire').val(data.codeforme);
-                if (data.sexe === 'Femme') {
-                    $('#feminin').attr('checked', true);
-                    $('#masculin').attr('checked', false);
-
-                } else {
-                    $('#feminin').attr('checked', false);
-                    $('#masculin').attr('checked', true);
-                }
-                if (data.type_dec === 'Normal') {
-                    $('#normale').attr('checked', true);
-                    $('#tardive').attr('checked', false);
-                } else {
-                    $('#normale').attr('checked', false);
-                    $('#tardive').attr('checked', true);
-                }
-                $('#id_pere').val(data.pere.id);
-                $('#nin_pere').val(data.pere.nin_pere);
-                $('#nom_pere').val(data.pere.nom_pere);
-                $('#prenom_pere').val(data.pere.prenom_pere);
-                $('#datenaissance_pere').val((date_pere.getDate().toString().length > 1 ? +date_pere.getFullYear() : "0") + "-" + (month_pere.toString().length > 1 ? month : "0" + month) + "-" + date_pere.getDate());
-                $('#lieu_naissance_pere').val(data.pere.lieu_naissp);
-                $('#domicile_pere').val(data.pere.domicile_pere);
-                $('#profession_pere').val(data.pere.profession_pere);
-                $('#id_mere').val(data.mere.id);
-                $('#nin_mere').val(data.mere.nin_mere);
-                $('#nom_mere').val(data.mere.nom_mere);
-                $('#prenom_mere').val(data.mere.prenom_mere);
-                $('#datenaissance_mere').val((date_mere.getDate().toString().length > 1 ? +date_mere.getFullYear() : "0") + "-" + (month_mere.toString().length > 1 ? month : "0" + month) + "-" + date_mere.getDate());
-                $('#lieu_naissance_mere').val(data.mere.lieu_naissm);
-                $('#domicile_mere').val(data.mere.domicile_mere);
-                $('#profession_mere').val(data.mere.profession_mere);
-                $('#id_declarant').val(data.declarant.id);
-                $('#nin_declarant').val(data.declarant.nin_declarant);
-                $('#nom_declarant').val(data.declarant.nom_declarant);
-                $('#prenom_declarant').val(data.declarant.prenom_declarant);
-                $('#datenaissance_declarant').val((date_declarant.getDate().toString().length > 1 ? +date_declarant.getFullYear() : "0") + "-" + (month_declarant.toString().length > 1 ? month : "0" + month) + "-" + date_declarant.getDate());
-                $('#lieu_naissance_declarant').val(data.declarant.lieu_naissd);
-                $('#domicile_declarant').val(data.declarant.domicile_declarant);
-                $('#profession_declarant').val(data.declarant.profession_declarant);
-
-            })
-        });
-        $('#submit').click(function (e) {
-            e.preventDefault();
-            $.ajax({
-                data: $('#form_naissance').serialize(),
-                url: "{{ route('validations_naissance.store') }}",
-                type: "POST",
-                dataType: 'json',
-                success: function (data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Validation reuissi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    $('#form_naissance').trigger("reset");
-                    $('#ajaxModel').modal('hide');
-                       table.draw();
-
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'echec validaion!',
-                    })
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            /*ajout mariage*/
+            $('#datem').on('change keyup', function () {
+                if (this.value.length === 10) {
+                    var debut = Date.parse($('#datem').val());
+                    var fin = Date.parse(new Date());
+                    var diff = new Date(fin - debut);
+                    console.log('diff', diff);
+                    var jour = diff / 86400000;
+                    if (jour < 45) {
+                        $('#normale').prop('checked', true);
+                        $('#tardive').prop('checked', false);
+                        $('#normale').prop('disabled', false);
+                    }
+                    else{
+                        $('#normale').prop('checked', false);
+                        $('#tardive').prop('checked', true);
+                        $('#tardive').prop('disabled', false);
+                    }
+                }
+            });
+            /*modifier mariage*/
+            $('#datem').on('change keyup', function () {
+                if (this.value.length === 10) {
+                    var debut = Date.parse($('#datem').val());
+                    var fin = Date.parse(new Date());
+                    var diff = new Date(fin - debut);
+                    console.log('diff', diff);
+                    var jour = diff / 86400000;
+                    if (jour < 45) {
+                        $('#normal').prop('checked', true);
+                        $('#tardiv').prop('checked', false);
+                        $('#normal').prop('disabled', false);
+
+                    }
+                    else{
+                        $('#normal').prop('checked', false);
+                        $('#tardiv').prop('checked', true);
+                        $('#tardiv').prop('disabled', false);
+                    }
+                }
+            });
+            /*afficher donnees mariage*/
+            var table = $('.table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('validations_mariage.index') }}",
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'num_registre', name: 'num_registre'},
+                    {data: 'lieum', name: 'lieum'},
+                    {data: 'regime', name: 'regime'},
+                    {data: 'option', name: 'option'},
+                    {
+                        data: 'datem',
+                        render: function (data) {
+                            var date = new Date(data);
+                            var month = date.getMonth() + 1;
+                            return (date.getDate().toString().length > 1 ? date.getDate() : "0" + date.getDate()) + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear()
+                        },
+                        name: 'datem'
+                    },
+                    {
+                        data: 'date_dec',
+                        render: function (data) {
+                            var date = new Date(data);
+                            var month = date.getMonth() + 1;
+                            return (date.getDate().toString().length > 1 ? date.getDate() : "0" + date.getDate()) + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear()
+                        },
+                        name: 'date_dec'
+                    },
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+
+            });
+            /*impression extrait*/
+            $('body').on('click', '.printMariage', function () {
+                var mariage_id = $(this).data('id');
+                $.get("{{'volet'}}" + '/' + mariage_id, function (data) {
+                    window.location.href = 'volet/' + mariage_id;
+                })
+            });
+            /*modifier mariage*/
+            $('body').on('click', '.modifier', function (e) {
+
+                var mariage_id = $(this).data('id');
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('editMariage') }}" + '/' + mariage_id  ,
+                    type: "GET",
+                    dataType: 'json',
+                    success: function (data) {
+                        var date = new Date(data.datem);
+                        var month = date.getMonth() + 1;
+
+                        var date_dec = new Date(data.date_dec);
+                        var month_dec = date_dec.getMonth() + 1;
+
+                       
+
+                        $('#ajaxModel2').modal('show');
+                        $('#mariage_id').val(data.id);
+                        $('#num-registre').val(data.num_registre);
+                        $('#option').val(data.option);
+                        $('#lieum').val(data.lieum);
+                        $('#regime').val(data.regime);
+                        $('#date_dec').val((date_dec.getDate().toString().length > 1 ? +date_dec.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_dec.getDate());
+                        $('#datem').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "_" + date.getDate());
+                        $('#dot').val(data.dot);
+                        $('#heurem').val(data.heurem);
+                        
+                        if (data.type_dec === 'NORMALE') {
+                            console.log('ok');
+                            $('#normal').attr('checked', true);
+                            $('#tardiv').attr('checked', false);
+                        } else if (data.type_dec === 'TARDIVE') {
+                            console.log('nok');
+                            $('#normal').attr('checked', false);
+                            $('#tardiv').attr('checked', true);
+                        }
+                        else{
+                            console.log('merde');
+                            $('#normal').attr('checked', false);
+                            $('#tardiv').attr('checked', false);
+                        }
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+
+                })
+            });
+            /*edit mariage*/
+            $('body').on('click', '.editMariage', function (e) {
+
+                var mariage_id = $(this).data('id');
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('editMariage') }}" + '/' + mariage_id  ,
+                    type: "GET",
+                    dataType: 'json',
+                    success: function (data) {
+                        var date = new Date(data.date_naiss);
+                        var month = date.getMonth() + 1;
+                        $('#ajaxModel').modal('show');
+                        $('#mariage_id').val(data.id);
+                        $('#num-registre').val(data.num_registre);
+                        $('#option').val(data.option);
+                        $('#lieum').val(data.lieum);
+                        $('#regime').val(data.regime);
+                        $('#datem').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate());
+                        $('#date_dec').val((date_dec.getDate().toString().length > 1 ? +date_dec.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_dec.getDate());
+                        $('#dot').val(data.dot);
+                        $('#heurem').val(data.heurem);
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+
+                })
+            });
+            /*enregistrer modification mariage*/
+            $('#submit').click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    data: $('#form_mariage').serialize(),
+                    url: "{{ route('validations_mariage.store') }}",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Validation reuissi',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        $('#form_mariage').trigger("reset");
+                        $('#ajaxModel').modal('hide');
+                        table.draw();
+
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'echec validation!',
+                        })
+                    }
+                });
+            });
+
         });
+    </script>
 
-
-    });
-</script>
