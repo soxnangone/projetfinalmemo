@@ -727,6 +727,9 @@
                     success: function (data) {
                         var date = new Date(data.date_naiss);
                         var month = date.getMonth() + 1;
+                        var date_dec = new Date(data.date_dec);
+                        var month_dec = date_dec.getMonth() + 1;
+
                         $('#ajaxModel').modal('show');
                         $('#mariage_id').val(data.id);
                         $('#num-registre').val(data.num_registre);
@@ -752,26 +755,7 @@
                     url: "{{ route('validations_mariage.store') }}",
                     type: "POST",
                     dataType: 'json',
-                    success: function (data) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Validation reuissi',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        $('#form_mariage').trigger("reset");
-                        $('#ajaxModel').modal('hide');
-                        table.draw();
-
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'echec validation!',
-                        })
-                    }
+                    
                 });
             });
 

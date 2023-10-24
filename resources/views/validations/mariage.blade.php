@@ -2,8 +2,6 @@
     <!-- iCheck -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ url('assets/gentelella/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
-
-
 @endsection
 
 @extends('layouts.master', ['title' => $title])

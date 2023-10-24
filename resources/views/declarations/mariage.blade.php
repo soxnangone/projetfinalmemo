@@ -150,6 +150,13 @@
                         $('#datem').val((date.getDate().toString().length > 1 ? +date.getFullYear() : "0") + "-" + (month.toString().length > 1 ? month : "0" + month) + "_" + date.getDate());
                         $('#dot').val(data.dot);
                         $('#heurem').val(data.heurem);
+                        $('#id_t1').val(data.id_t1);
+                        $('#id_t2').val(data.id_t2);
+                        $('#id_t3').val(data.id_t3);
+                        $('#id_t4').val(data.id_t4);
+                        $('#id_officier').val(data.id_officier);
+                        $('#id_epoux').val(data.id_epoux);
+                        $('#id_epouse').val(data.id_epouse);
                         
                         if (data.type_dec === 'NORMALE') {
                             console.log('ok');
@@ -184,6 +191,11 @@
                     success: function (data) {
                         var date = new Date(data.date_naiss);
                         var month = date.getMonth() + 1;
+
+                        var date_dec = new Date(data.date_dec);
+                        var month_dec = date_dec.getMonth() + 1;
+
+
                         $('#ajaxModel').modal('show');
                         $('#mariage_id').val(data.id);
                         $('#num-registre').val(data.num_registre);
@@ -194,6 +206,7 @@
                         $('#date_dec').val((date_dec.getDate().toString().length > 1 ? +date_dec.getFullYear() : "0") + "-" + (month_dec.toString().length > 1 ? month : "0" + month) + "-" + date_dec.getDate());
                         $('#dot').val(data.dot);
                         $('#heurem').val(data.heurem);
+                        
                     },
                     error: function (data) {
                         console.log('Error:', data);
@@ -212,7 +225,7 @@
                     success: function (data) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Validation reuissi',
+                            title: 'Validation reussi',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -226,7 +239,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'echec validation!',
+                            text: 'echec validation!'
                         })
                     }
                 });
@@ -321,6 +334,15 @@
                     @csrf
                     <div id="wizard" class="form_wizard wizard_horizontal">
                         <ul class="wizard_steps">
+                             <li>
+                                <a href="#step-0" >
+                                    <span class="step_no"></span>
+                                    <span class="step_descr">
+                                      <br/>
+                                      <small>Cliquez suivant</small>
+                                  </span>
+                                </a>
+                            </li>
                             <li>
                                 <a href="#step" >
                                     <span class="step_no">1</span>
@@ -368,6 +390,9 @@
                                 </a>
                             </li>
                         </ul>
+                        <div id="step-0">
+                           <small><h2>Allez à l'étape suivante pour saisir les informations relatives au mariage</h2></small>
+                        </div>
                         <div id="step">
                             <div class="row">
 

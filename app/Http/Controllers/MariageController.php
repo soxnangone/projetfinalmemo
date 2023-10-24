@@ -62,11 +62,10 @@ class MariageController extends Controller
             $mariage->heurem = strtoupper(request('heurem'));
             $mariage->datem = request('datem');
             $mariage->lieum = strtoupper(request('lieum'));
-            $mariage->date_dec =  strtoupper(request('date_dec'));
+            $mariage->date_dec = request('date_dec');
             $mariage->regime =  strtoupper(request('regime'));
             $mariage->option =  strtoupper(request('option'));
             $mariage->dot =  strtoupper(request('dot'));
-            $mariage->validation =0;
             $mariage->id_epouse = $epouse->recup_id_epouse;
             $mariage->id_epoux = $epoux->recup_id_epoux;
             $mariage->id_t1=$temoin->recup_id_temoin1;
@@ -101,7 +100,7 @@ class MariageController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                        $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editMariage" ><i class="fa fa-check"></i></a>';
+                        $btn = '<a href="javascript:void(0)" data-toggle="modal" data-target="#ajaxModel1" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editMariage" ><i class="fa fa-check"></i></a>';
                         return $btn;
                 })
                 ->rawColumns(['action'])
@@ -161,7 +160,56 @@ class MariageController extends Controller
 
     public function store(Request $request)
     {
-      
+        $epoux = new Epoux();
+        $epouse = new Epouse();
+        $temoin= new Temoin();
+        $officier= new Officier();
+       /* Epoux::query()
+        ->where('id', $request->get('id_epoux'))
+        ->update([
+            'nin_epoux'=>strtoupper(request('nin_epoux')),
+             'nom_epoux'=>strtoupper(request('nom_epoux')),
+             'prenom_epoux'=>strtoupper(request('prenom_epoux')),
+             'date_naiss_epoux'=>strtoupper(request('date_naiss_epoux')),
+             'lieu_naiss_epoux'=>strtoupper(request('lieu_naiss_epoux')),
+             'domicile_epoux'=>strtoupper(request('domicile_epoux')),
+             'profession_epoux'=>strtoupper(request('profession_epoux')),
+             'situation_mat_epoux'=>strtoupper(request('situation_mat_epoux'))
+        ]);
+
+        Epouse::query()
+        ->where('id', $request->get('id_epouse'))
+        ->update([
+            'nin_epouse'=>strtoupper(request('nin_epouse')),
+             'nom_epouse'=>strtoupper(request('nom_epouse')),
+             'prenom_epouse'=>strtoupper(request('prenom_epouse')),
+             'date_naiss_epouse'=>strtoupper(request('date_naiss_epouse')),
+             'lieu_naiss_epouse'=>strtoupper(request('lieu_naiss_epouse')),
+             'domicile_epouse'=>strtoupper(request('domicile_epouse')),
+             'profession_epouse'=>strtoupper(request('profession_epouse')),
+             'situation_mat_epouse'=>strtoupper(request('situation_mat_epouse'))
+        ]);
+
+        Temoin::query()
+        ->where('id', $request->get('id_officier'))
+        ->update([
+            'nin'=>strtoupper(request('nin')),
+             'nom'=>strtoupper(request('nom')),
+             'prenom'=>strtoupper(request('prenom')),
+             'date_naissance'=>strtoupper(request('date_naissance')),
+             'lieu_naissance'=>strtoupper(request('lieu_naissance')),
+             'domicile'=>strtoupper(request('domicile')),
+             'profession'=>strtoupper(request('profession')),
+        ]);
+
+        Officier::query()
+        ->where('id', $request->get('id_officier'))
+        ->update([
+             'nom'=>strtoupper(request('nom')),
+             'prenom'=>strtoupper(request('prenom')),
+           
+        ]);
+*/
         Mariage::query()
             ->where('id', $request->get('mariage_id'))
             ->update([
@@ -173,6 +221,13 @@ class MariageController extends Controller
                 'option' => request('option'),
                 'dot'=>request('dot'),
                 'validation' => 1,
+                'id_epouse' => $epouse->recup_id_epouse,
+                'id_epoux' => $epoux->recup_id_epoux,
+                'id_t1'=>$temoin->recup_id_temoin1,
+                'id_t2'=>$temoin->recup_id_temoin2,
+                'id_t3'=>$temoin->recup_id_temoin3,
+                'id_t4'=>$temoin->recup_id_temoin4,
+                'id_officier'=>$officier->recup_id_officier,
                 'id_validant' => auth()->id()
             ]);
         return response()->json(['success' => 'Declaration Validé!']);
@@ -187,7 +242,7 @@ class MariageController extends Controller
             ->findOrFail($id);
         return response()->json($mariag);
     }
-    public function editnaiss($id)
+    public function editMariage($id)
     {
         $mariags = Mariage::query()
             ->with('epouse')

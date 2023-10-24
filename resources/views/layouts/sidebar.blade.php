@@ -34,7 +34,13 @@
                             </ul>
                         </li>
                         </li>
-                        <li><a><i class="fa fa-remove"></i> DECES </a>
+                        <li><a ><i class="fa fa-remove"></i> DECES <span class="fa fa-chevron-down"></span> </a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{ url('declarations/Mariage') }}">Declaration</a></li>
+                                <li><a href="{{route('impression_extrait_mariage.index')}}" >Extrait</a></li>
+                                <li><a >Copie Litterale</a></li>
+                            </ul>
+                        </li>
                         </li>
                     @endif
                     @if(Auth::user()->poste=="OFFICIER")

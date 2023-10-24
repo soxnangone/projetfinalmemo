@@ -182,6 +182,8 @@
                     success: function (data) {
                         var date = new Date(data.date_naiss);
                         var month = date.getMonth() + 1;
+                        var date_dec = new Date(data.date_dec);
+                        var month_dec = date_dec.getMonth() + 1;
                         $('#ajaxModel').modal('show');
                         $('#mariage_id').val(data.id);
                         $('#num-registre').val(data.num_registre);

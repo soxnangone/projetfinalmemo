@@ -224,7 +224,7 @@ Route::post('/ajoutOfficier', 'OfficierController@ajout');
 
 Route::get('declarations/Mariage', 'MariageController@index1')->name('mariage_valide');
 Route::get('/editnaisse/{id}', 'MariageController@edit');
-Route::get('/editnaiss/{id}', 'MariageController@editnaiss');
+Route::get('/editMariage/{id}', 'MariageController@editMariage');
 Route::resource('validations_mariage', 'MariageController');
 
 Route::get('formulaire/epoux', 'EpouxController@index1')->name('epoux_valide');
